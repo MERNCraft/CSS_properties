@@ -1,0 +1,61 @@
+body {
+  --start: 0;
+  counter-reset: item var(--start);
+  color: #ddd;
+  background-color: #222;
+}
+
+main {
+  position: relative;
+  width: 150px;
+  height: 300px;
+}
+
+b::before {
+  content: "—[" counter(item) "]—";
+}
+
+p {
+  counter-increment: item;
+}
+
+p::before {
+  content: counter(item) ": ";
+}
+
+label {
+  display: block;
+}
+
+/* Use the checkboxes to change the value of --start */
+body:has(#add1000:checked)  {
+  --start: 1000
+}
+
+body:has(#add10:checked)  {
+  --start: 10
+}
+
+body:has(#add100:checked)  {
+  --start: 100
+}
+
+/* Show the GitHub logo */
+a.github {
+  width: 0;
+  height: 0;
+
+  img {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    width: 32px;
+    height: 32px;
+    filter: grayscale(1);
+    opacity: 0.25;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
